@@ -1,0 +1,18 @@
+{
+  "$schema": "https://github.com/roeslein-systems/asset-oee-smprofile/schema/asset-oee-v1.schema.json",
+  "assetPath": "Plant1/Line2/Cell3/PackagingMachine",
+
+  "shift": {
+    "start": "2026-03-01T06:00:00Z",
+    "end": "2026-03-01T14:00:00Z",
+    "shiftNum": "1"
+  },
+
+  "OEE": {
+    "availability": 0.92,
+    "performance": 0.88,
+    "quality": 0.95
+  },
+
+  "overallOEE": 0.77
+}
