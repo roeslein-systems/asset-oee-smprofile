@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/roeslein-systems/asset-oee-smprofile/schema/asset-oee-v1.schema.json",
+  "title": "Asset OEE Smart Manufacturing Profile",
+  "description": "Smart Manufacturing Profile defining a standardized structure for asset-level Overall Equipment Effectiveness (OEE) data.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "assetPath",
+    "shift",
+    "OEE",
+    "overallOEE"
+  ],
+
+  "properties": {
+    "assetPath": {
+      "type": "string",
+      "description": "Logical UNS path identifying the asset producing the OEE values"
+    },
+
+    "shift": {
+      "type": "object",
+      "description": "Shift context for the reported OEE values",
+      "required": ["start", "end", "shiftNum"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Shift start timestamp (ISO 8601)"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Shift end timestamp (ISO 8601)"
+        },
+        "shiftNum": {
+          "type": "string",
+          "description": "Shift identifier or number"
+        }
+      }
+    },
+
+    "OEE": {
+      "type": "object",
+      "description": "Individual OEE components",
+      "required": ["availability", "performance", "quality"],
+      "properties": {
+        "availability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Availability component of OEE (0–1)"
+        },
+        "performance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Performance component of OEE (0–1)"
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Quality component of OEE (0–1)"
+        }
+      }
+    },
+
+    "overallOEE": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Calculated overall OEE value (0–1)"
+    }
+  }
+}
